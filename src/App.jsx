@@ -1,23 +1,22 @@
-import Bienvenida from "./components/Bienvenida";
-import Cabecera from "./components/Cabecera";
-import TarjetaActividad from "./components/TarjetaActividad";
+import { Route, Routes } from "react-router-dom";
+import Inicio from "./pages/Inicio";
+import Actividades from "./pages/Actividades";
+import DetalleActividad from "./pages/DetalleActividad";
+import AdminActividades from "./pages/admin/AdminActividades";
+import NoEncontrada from "./pages/NoEncontrada";
 import Navegacion from "./components/Navegacion";
-import PiePagina from "./components/PiePagina";
 
 function App() {
   return (
     <>
       <Navegacion />
-      <Cabecera />
-      <main className="container py-4">
-        <Bienvenida />
-        <div className="row g-4">
-          <div className="col-12 col-md-6 col-lg-4">
-            <TarjetaActividad />
-          </div>
-        </div>
-      </main>
-      <PiePagina />
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/actividades" element={<Actividades />} />
+        <Route path="/actividades/:id" element={<DetalleActividad />} />
+        <Route path="/admin/actividades" element={<AdminActividades />} />
+        <Route path="*" element={<NoEncontrada />} />
+      </Routes>
     </>
   );
 }
